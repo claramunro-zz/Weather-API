@@ -21,7 +21,7 @@ function displayPizzaOrder(pizzaDisplay) {
     var pizzaList = $("ul#allPizzas");
     var htmlForAllPizzas = "";
     pizzaDisplay.multiplePizzas.forEach(function(pizza) {
-        htmlForAllPizzas += "<li id=" + pizza.id + "> Size: " + pizza.size + ". Toppings: " + pizza.toppings + ". Price: " + pizza.price + "$ </li>";
+        htmlForAllPizzas += "<li id=" + pizza.id + "> Size: " + pizza.size + ".<br/> Toppings: " + pizza.toppings + ".<br/> Price: " + pizza.price + "$ </li>";
     });
     pizzaList.html(htmlForAllPizzas);
 };
@@ -105,7 +105,8 @@ $(document).ready(function() {
         });
         $("#seeAllPizzas").click(function () {
             displayPizzaOrder(extraPizzas);
-            $("#fullOrderPrice").text(extraPizzas.showOrderPrice());;
+            $("#fullOrderPrice").text(extraPizzas.showOrderPrice());
+            $("#fullOrderPrice")[0].scrollIntoView({ behavior: 'smooth' });
         });
     });
 });
