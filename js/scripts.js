@@ -1,11 +1,22 @@
 // Business Logic
-function Pizza(size, toppings) {
+function Pizza(size, toppings, price) {
     this.size = size,
-    this.toppings = []
+    this.toppings = [],
+    this.price = 0
 }
 
 Pizza.prototype.addToppings = function (topping) {
     this.toppings.push(topping);
+}
+
+Pizza.prototype.pizzaLogic = function () {
+    if (this.size === "medium") {
+        this.price = 7;
+    } else if (this.size === "large") {
+        this.price = 9;
+    } else if (this.size === "grand") {
+        this.price = 11;
+    };
 }
 
 
@@ -20,6 +31,7 @@ $(document).ready(function() {
         });
         var newPizza = new Pizza(inputtedSize, inputtedToppings);
         newPizza.addToppings(inputtedToppings);
+        newPizza.pizzaLogic();
         console.log(newPizza);
     });
 
