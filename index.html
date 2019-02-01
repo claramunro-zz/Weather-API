@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Tanno's Pizza</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Tanno's Pizza</h1>
+            <h2>Authentic Hand-Tossed Italian Pizzas</h2>
+        </div>
+        <h2>Select your size of pizza and toppings!</h2>
+        <form id="pizzaOrder">
+            <label class="size"><h3>Size:</h3></label><br>
+            <input type="radio" name="size" value="medium">Medium<br>
+            <input type="radio" name="size" value="large">Large<br>
+            <input type="radio" name="size" value="grand">Grand<br>
+            <h2>Toppings:</h2>
+            <input type="checkbox" name="toppings" value="cheese">Cheese<br>
+            <input type="checkbox" name="toppings" value="extracheese">Extra Cheese<br>
+            <input type="checkbox" name="toppings" value="pepperoni">Pepperoni<br>
+            <input type="checkbox" name="toppings" value="sausage">Sausage<br>
+            <input type="checkbox" name="toppings" value="mushroom">Mushrooms<br>
+            <input type="checkbox" name="toppings" value="olive">Olives<br>
+            <input type="checkbox" name="toppings" value="greenpepper">Green Peppers<br>
+            <button type="submit" id="orderButton">Order!</button>
+        </form>
+    </div>
+</body>
+</html>
