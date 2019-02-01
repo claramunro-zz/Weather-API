@@ -12,25 +12,23 @@
             <h1>Tanno's Pizza</h1>
             <h2>Authentic Hand-Tossed Italian Pizzas</h2>
         </div>
-        <h2>Select your size of pizza and toppings!</h2>
+        <h3 class="threeD">Select your size of pizza and toppings!</h3>
         <form id="pizzaOrder">
-            <label class="size"><h3>Size:</h3></label><br>
+            <label class="size"><h3 class="threeD">Size:</h3></label><br>
             <input type="radio" name="size" value="Medium">Medium ($7)<br>
             <input type="radio" name="size" value="Large">Large ($9)<br>
             <input type="radio" name="size" value="Grand">Grand ($11)<br>
-            <h2>Toppings: ($1 per topping)</h2>
-            <input id="id_1" type="checkbox" name="toppings" value="Cheese">Cheese (Comes with pizza)<br>
-            <input id="id_2" type="checkbox" name="toppings" value="Extracheese">Extra Cheese<br>
+            <h3 class="threeD">Toppings: ($1 per topping)</h3>
+            <input id="id_1" type="checkbox" name="toppings" value="Cheese">Cheese (Free with pizza)<br>
+            <input id="id_2" type="checkbox" name="toppings" value="ExtraCheese">Extra Cheese<br>
             <input id="id_3" type="checkbox" name="toppings" value="Pepperoni">Pepperoni<br>
             <input id="id_4" type="checkbox" name="toppings" value="Sausage">Sausage<br>
-            <input id="id_5" type="checkbox" name="toppings" value="Mushroom">Mushrooms<br>
-            <input id="id_6" type="checkbox" name="toppings" value="Olive">Olives<br>
-            <input id="id_7"  type="checkbox" name="toppings" value="Greenpepper">Green Peppers<br>
-            <button type="submit" id="orderButton">Order!</button>
+            <input id="id_5" type="checkbox" name="toppings" value="Mushrooms">Mushrooms<br>
+            <input id="id_6" type="checkbox" name="toppings" value="Olives">Olives<br>
+            <input id="id_7"  type="checkbox" name="toppings" value="GreenPeppers">Green Peppers<br>
+            <button class="btn" type="submit" id="orderButton">Add pizza!</button>
         </form>
-        <div id="output">
-
-        </div>
+        <h4 class="clickable" id="output"></h4>
     </div>
 </body>
 </html>
