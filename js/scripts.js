@@ -10,20 +10,18 @@ Pizza.prototype.addToppings = function (topping) {
     this.toppings.push(topping);
 }
 
-Pizza.prototype.pizzaLogic = function () {
-    if (this.size === "medium") {
+Pizza.prototype.sizeLogic = function () {
+    if (this.size === "Medium") {
         this.price = 7;
-    } else if (this.size === "large") {
+    } else if (this.size === "Large") {
         this.price = 9;
-    } else if (this.size === "grand") {
+    } else if (this.size === "Grand") {
         this.price = 11;
     };
 }
 
 Pizza.prototype.toppingsCost = function () {
-    if (document.getElementById("id_1").checked) {
-        this.toppingsPrice += 1;
-    } if (document.getElementById("id_2").checked) {
+    if (document.getElementById("id_2").checked) {
         this.toppingsPrice += 1;
     } if (document.getElementById("id_3").checked) {
         this.toppingsPrice += 1;
@@ -43,7 +41,7 @@ Pizza.prototype.pizzaCost = function () {
 }
 
 Pizza.prototype.showFullPrice = function () {
-    return "Your order came to $" + this.price;
+    return "Your order came to $" + this.price + ". Click to see order";
 }
 
 // User Interface Logic 
@@ -57,10 +55,14 @@ $(document).ready(function() {
         });
         var newPizza = new Pizza(inputtedSize, inputtedToppings);
         newPizza.addToppings(inputtedToppings);
-        newPizza.pizzaLogic();
+        newPizza.sizeLogic();
         newPizza.toppingsCost();
         newPizza.pizzaCost();
         $("#output").text(newPizza.showFullPrice());
+        $("#output").click(function (event) {
+            event.preventDefault();
+            $("#output").html("Size: " + newPizza.size + "<br/>" + "Toppings: " + newPizza.toppings);
+        });
         console.log(newPizza);
     });
 });
