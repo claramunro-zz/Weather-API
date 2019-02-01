@@ -1,12 +1,20 @@
-// Business Logic
+// Business Logic for Multiple Pizzas
+
+function extraPizzas() {
+    this.multiplePizzas = []
+}
+
+extraPizzas.prototype.addPizza = function(newPizza) {
+    this.multiplePizzas.push(newPizza);
+}
+
+// Business Logic for Pizza Object
 function Pizza(size, toppings, price) {
     this.size = size,
     this.toppings = [],
     this.price = 0,
     this.toppingsPrice = 0
 } 
-
-var multiplePizzas = [];
 
 Pizza.prototype.addToppings = function (topping) {
     this.toppings.push(topping);
@@ -49,6 +57,9 @@ Pizza.prototype.showFullPrice = function () {
 
 
 // User Interface Logic 
+
+var extraPizzas = new extraPizzas();
+
 $(document).ready(function() {
     $("form#pizzaOrder").submit(function(event) {
         event.preventDefault();
@@ -58,8 +69,8 @@ $(document).ready(function() {
             inputtedToppings.push($(this).val());
         });
         var newPizza = new Pizza(inputtedSize, inputtedToppings);
-        multiplePizzas.push(newPizza);
-        console.log(multiplePizzas);
+        extraPizzas.addPizza(newPizza);
+        console.log(extraPizzas);
         newPizza.addToppings(inputtedToppings);
         newPizza.sizeLogic();
         newPizza.toppingsCost();
@@ -72,9 +83,6 @@ $(document).ready(function() {
         $("#output").click(function () {
             $("#output").html("Size: " + newPizza.size + "<br/>" + "Toppings: " + newPizza.toppings + "<br/> Price: $" + newPizza.price);
             $("#output").removeClass("clickable");
-        });
-        multiplePizzas.forEach(function() {
-            console.log();
         });
     });
 });
