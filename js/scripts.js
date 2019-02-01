@@ -7,10 +7,6 @@ function extraPizzas() {
     this.fullPrice = 0
 }
 
-extraPizzas.prototype.addToOrderPrice = function () {
-    this.fullPrice += Pizza.price;
-}
-
 extraPizzas.prototype.assignId = function () {
     this.currentId += 1;
     return this.currentId;
@@ -100,7 +96,7 @@ $(document).ready(function() {
         if (!inputtedSize) {
             alert("Please select your pizza size");
         } else {
-            extraPizzas.addToOrderPrice();
+            extraPizzas.fullPrice += newPizza.price;  
             $("#output").text(newPizza.showFullPrice());
         }
         $("#output").click(function () {
