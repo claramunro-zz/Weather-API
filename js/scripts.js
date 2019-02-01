@@ -1,11 +1,37 @@
 // Business Logic for Multiple Pizzas
 
 function extraPizzas() {
-    this.multiplePizzas = []
+    this.multiplePizzas = [],
+    this.currentId = 0,
+    this.price = 0,
+    this.fullPrice = 0
 }
 
-extraPizzas.prototype.addPizza = function(newPizza) {
-    this.multiplePizzas.push(newPizza);
+extraPizzas.prototype.addToOrderPrice = function () {
+    this.fullPrice += Pizza.price;
+}
+
+extraPizzas.prototype.assignId = function () {
+    this.currentId += 1;
+    return this.currentId;
+}
+
+extraPizzas.prototype.addPizza = function(pizza) {
+    pizza.id = this.assignId();
+    this.multiplePizzas.push(pizza);
+}
+
+function displayPizzaOrder(pizzaDisplay) {
+    var pizzaList = $("ul#allPizzas");
+    var htmlForAllPizzas = "";
+    pizzaDisplay.multiplePizzas.forEach(function(pizza) {
+        htmlForAllPizzas += "<li id=" + pizza.id + "> Size: " + pizza.size + ". Toppings: " + pizza.toppings + ". Price: " + pizza.price + "$ </li>";
+    });
+    pizzaList.html(htmlForAllPizzas);
+};
+
+extraPizzas.prototype.showOrderPrice = function () {
+    return "Your order total is $" + extraPizzas.fullPrice;
 }
 
 // Business Logic for Pizza Object
@@ -51,13 +77,10 @@ Pizza.prototype.pizzaCost = function () {
 }
 
 Pizza.prototype.showFullPrice = function () {
-    return "Your order came to $" + this.price + ". Click here to see order";
+    return "This pizza will cost $" + this.price + ". Add another pizza above or click here to see current pizza details";
 }
 
-
-
 // User Interface Logic 
-
 var extraPizzas = new extraPizzas();
 
 $(document).ready(function() {
@@ -70,7 +93,6 @@ $(document).ready(function() {
         });
         var newPizza = new Pizza(inputtedSize, inputtedToppings);
         extraPizzas.addPizza(newPizza);
-        console.log(extraPizzas);
         newPizza.addToppings(inputtedToppings);
         newPizza.sizeLogic();
         newPizza.toppingsCost();
@@ -78,11 +100,16 @@ $(document).ready(function() {
         if (!inputtedSize) {
             alert("Please select your pizza size");
         } else {
+            extraPizzas.addToOrderPrice();
             $("#output").text(newPizza.showFullPrice());
         }
         $("#output").click(function () {
-            $("#output").html("Size: " + newPizza.size + "<br/>" + "Toppings: " + newPizza.toppings + "<br/> Price: $" + newPizza.price);
+            $("#output").html("Current pizza: <br/> Size: " + newPizza.size + "<br/>" + "Toppings: " + newPizza.toppings + "<br/> Price: $" + newPizza.price + "<br/>");
             $("#output").removeClass("clickable");
+        });
+        $("#seeAllPizzas").click(function () {
+            displayPizzaOrder(extraPizzas);
+            $("#fullOrderPrice").text(extraPizzas.showOrderPrice());;
         });
     });
 });
