@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-export class Date {
+export default class Date {
   constructor(year, month, day, countDays) {
     this.year = year;
     this.month = month;
@@ -53,4 +52,3 @@ export class Date {
     }
   }
 }
-/* eslint-disable no-unused-vars */

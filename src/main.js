@@ -1,4 +1,4 @@
-import { Date } from './weekday-calculator.js';
+import Date from './weekday-calculator.js';
 import $ from 'jquery';
 import 'bootstrap';
 import './styles.css';
