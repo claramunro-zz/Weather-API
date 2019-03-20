@@ -12,12 +12,23 @@
     <div class="container">
         <div class="weekday-form">
             <form id="weekdayForm">
-                <label for="dateInput">Enter a date:</label>
-                <input id="dateInput" type="date"></input>
+                <label for="dayInput">Enter a day:</label>
+                <input id="dayInput" type="number" required min="1" max="31" placeholder="1-31"></input>
+                <br>
+                <label for="monthInput">Enter a month:</label>
+                <input id="monthInput" type="number" required min="1" max="12" placeholder="1-12"></input>
+                <br>
+                <label for="yearInput">Enter a year:</label>
+                <input id="yearInput" type="number" required min="0001" placeholder="Four Digit Year"></input>
+                <br>
                 <button id="dateButton" type="submit">Submit</button>
             </form>
         </div>
-        <div id="result"></div>
+        <h1><div id="result"></div></h1>
     </div>
 </body>
 </html>
+
+
+<!-- <label for="dateInput">Enter a day:</label>
+<input id="dateInput" type="number"></input> -->
