@@ -11,13 +11,14 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    port: 9000
   },
   plugins: [
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Tannos Pizza',
+      title: 'Weekday Calculator',
       template: './src/index.html',
       inject: 'body'
     })
@@ -37,7 +38,18 @@ module.exports = {
           /node_modules/,
           /spec/
         ],
-        loader: "eslint-loader"
+        loader: "eslint-loader",
+      },
+      {
+        test: /\.js$/,
+        exclude: [
+          /node_modules/,
+          /spec/
+        ],
+        loader: "babel-loader",
+        options: {
+          presets: ['es2015']
+        }
       }
     ]
   }

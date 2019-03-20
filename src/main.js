@@ -1,38 +1,26 @@
-import { Pizza, ExtraPizzas, displayPizzaOrder, ExtraPizzasPrototype } from './tannos-pizza.js';
+/* eslint-disable no-unused-vars */
+import { Date, DatePrototype } from './weekday-calculator.js';
 import $ from 'jquery';
 import 'bootstrap';
 import './styles.css';
 
 $(document).ready(function () {
-  $("form#pizzaOrder").submit(function (event) {
+  $("#weekdayForm").submit(function(event){
     event.preventDefault();
-    var inputtedSize = $("input:radio[name=size]:checked").val();
-    var inputtedToppings = [];
-    $("input:checkbox[name=toppings]:checked").each(function () {
-      inputtedToppings.push($(this).val());
-    });
-    var newPizza = new Pizza(inputtedSize, inputtedToppings);
-    ExtraPizzasPrototype.addPizza(newPizza);
-    newPizza.addToppings(inputtedToppings);
-    newPizza.sizeLogic();
-    newPizza.toppingsCost();
-    newPizza.pizzaCost();
-    if (!inputtedSize) {
-      alert("Please select your pizza size");
-    } else {
-      ExtraPizzas.fullPrice += newPizza.price;
-      $("#output").text(newPizza.showFullPrice());
-      $("#output")[0].scrollIntoView({ behavior: 'smooth' });
-    }
-    $("#output").click(function () {
-      $("#output").html("Current Pizza: <br/> Size: " + newPizza.size + "<br/>" + "Toppings: " + newPizza.toppings + "<br/> Price: $" + newPizza.price + "<br/>");
-      $("#output")[0].scrollIntoView({ behavior: 'smooth' });
-      $("#output").removeClass("clickable");
-    });
-    $("#seeAllPizzas").click(function () {
-      displayPizzaOrder(ExtraPizzas);
-      $("#fullOrderPrice").text(ExtraPizzasPrototype.showOrderPrice());
-      $("#fullOrderPrice")[0].scrollIntoView({ behavior: 'smooth' });
-    });
+    let userDate = $("#dateInput").val();
+    let dateSplit = DatePrototype.splitDate(userDate);
+    const yearNumber = parseInt(dateSplit[0]);
+    const monthNumber = parseInt(dateSplit[1]);
+    const dayNumber = parseInt(dateSplit[2]);
+    let dateObject = new Date(yearNumber, monthNumber, dayNumber);
+    dateObject.leapYearAddDays(yearNumber);
+    let finalDay = dateObject.getWeekday();
+    $("#result").text(finalDay);
+    console.log(dayNumber);
+    console.log(dateSplit);
+    console.log(userDate);
+    console.log(finalDay);
+    dateObject.resetDays(yearNumber, monthNumber, dayNumber);
   });
 });
+/* eslint-disable no-unused-vars */
