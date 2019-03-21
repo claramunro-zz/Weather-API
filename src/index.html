@@ -7,28 +7,24 @@
     <title>Weekday Calculator</title>
 </head>
 <body>
-    <h1>What day of the week is it?</h1>
-    <h2>Select any date and see what day of the week it is</h2>
+    <h1>Haiku or Nah?</h1>
+    <h2>Enter Each Line Of Your Haiku</h2>
     <div class="container">
-        <div class="weekday-form">
-            <form id="weekdayForm">
-                <label for="dayInput">Enter a day:</label>
-                <input id="dayInput" type="number" required min="1" max="31" placeholder="1-31"></input>
+        <div class="haiku">
+            <form id="haikuForm">
+                <input id="lineOne" type="text" placeholder="enter line 1" required></input>
                 <br>
-                <label for="monthInput">Enter a month:</label>
-                <input id="monthInput" type="number" required min="1" max="12" placeholder="1-12"></input>
                 <br>
-                <label for="yearInput">Enter a year:</label>
-                <input id="yearInput" type="number" required min="0001" placeholder="Four Digit Year"></input>
+                <input id="lineTwo" type="text" placeholder="enter line 2" required></input>
                 <br>
-                <button id="dateButton" type="submit">Submit</button>
+                <br>
+                <input id="lineThree" type="text" placeholder="enter line 3"></input>
+                <br>
+                <br>
+                <button id="submitButton" type="submit">Submit</button>
             </form>
         </div>
         <h1><div id="result"></div></h1>
     </div>
 </body>
 </html>
-
-
-<!-- <label for="dateInput">Enter a day:</label>
-<input id="dateInput" type="number"></input> -->

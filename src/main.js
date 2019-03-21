@@ -1,22 +1,24 @@
-import Date from './weekday-calculator.js';
+import Haiku from './haiku-creator.js';
 import $ from 'jquery';
 import 'bootstrap';
 import './styles.css';
 
 $(document).ready(function () {
-  $("#weekdayForm").submit(function(event){
+  $("#haikuForm").submit(function(event){
     event.preventDefault();
-    let countDays = 0;
-    let monthInput = $("#monthInput").val();
-    let dayInput = $("#dayInput").val();
-    let yearInput = $("#yearInput").val();
-    const dayNumber = parseInt(dayInput);
-    const monthNumber = parseInt(monthInput);
-    const yearNumber = parseInt(yearInput);
-    let dateObject = new Date(yearNumber, monthNumber, dayNumber, countDays);
-    let updatedDays = dateObject.leapYearAddDays(yearNumber, countDays);
-    let finalDay = dateObject.getWeekday(updatedDays);
-    $("#result").text(finalDay);
-    dateObject.resetDays(yearNumber, monthNumber, dayNumber);
+    let lineOne = $("#lineOne").val();
+    let lineTwo = $("#lineTwo").val();
+    let lineThree = $("#lineThree").val();
+    let haikuPoem = new Haiku(lineOne, lineTwo, lineThree);
+    let haikuSplit = haikuPoem.splitWords(lineOne);
+    let haikuSplit2 = haikuPoem.splitWords(lineTwo);
+    let haikuSplit3 = haikuPoem.splitWords(lineThree);
+    let haikuCount = haikuPoem.countSyllables(haikuSplit);
+    let haikuCount2 = haikuPoem.countSyllables(haikuSplit2);
+    let haikuCount3 = haikuPoem.countSyllables(haikuSplit3);
+    let finalHaiku = haikuPoem.isHaiku(haikuCount, haikuCount2, haikuCount3);
+    console.log(finalHaiku);
+    // $("#result").text(isHaiku);
+
   });
 });
