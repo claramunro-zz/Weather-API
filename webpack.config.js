@@ -24,8 +24,20 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Weekday Calculator',
       template: './src/index.html',
-      inject: 'body'
-    })
+      inject: 'body',
+      minify: {
+     removeComments: true,
+     collapseWhitespace: true
+   }
+    }),
+    new HtmlWebpackPlugin({
+    template: './src/contact.html',
+    filename: 'contact.html',
+    minify: {
+     removeComments: true,
+     collapseWhitespace: true
+   }
+  }),
   ],
   module: {
     rules: [
@@ -38,6 +50,27 @@ module.exports = {
             'sass-loader'
         ]
       },
+
+      {
+       test: /\.(gif|png|jpe?g)$/,
+       use: [
+         {
+           loader: 'file-loader',
+           options: {
+             name: '[name].[ext]',
+             outputPath: 'assets/images/'
+           }
+         }
+       ]
+     },
+
+     {
+       test:/\.html$/,
+       use: [
+         'html-loader'
+       ]
+     },
+
 
       {
         test: /\.js$/,
