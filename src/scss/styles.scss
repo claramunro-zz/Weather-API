@@ -1,0 +1,9 @@
+$font-stack: Helvetica, sans-serif;
+$primary-font-color: red;
+$primart-background-color: yellow;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-font-color;
+  background-color: $primart-background-color;
+}

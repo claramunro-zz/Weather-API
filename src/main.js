@@ -1,4 +1,7 @@
 import WeatherService from "./weather-service.js";
+import './scss/styles.scss';
+
+
 
 $(document).ready(function() {
   $('#weatherLocation').click(function() {
