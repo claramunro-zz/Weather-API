@@ -1,12 +1,20 @@
+import WeatherService from "./weather-service.js";
+
 $(document).ready(function() {
   $('#weatherLocation').click(function() {
     let city = $('#location').val();
     $('#location').val("");
-    $.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=cf769a9cbdb684773af3c84d2cee43fb`).then(function(response) {
-      $('.showHumidity').text(`The humidity in ${city} is ${response.main.humidity}%`);
-      $('.showTemp').text(`The temperature in Kelvins is ${response.main.temp} degrees.`);
-    }).fail(function(error) {
-      $('.showErrors').text(`There was an error processing your request: ${error.responseText}. Please try again.`);
+
+    let weatherService = new WeatherService();  // create instance of WeatherService class
+    let promise = weatherService.getWeatherByCity(city);  // call the instance method and pass in user input
+
+    promise.then(function(response) {
+      let body = JSON.parse(response);
+      $('.showHumidity').text(`The humidity in ${city} is ${body.main.humidity}%`);
+      $('.showTemp').text(`The temperature in Kelvins is ${body.main.temp} degrees.`);
+    }, function(error) {
+      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
   });
+
 });
